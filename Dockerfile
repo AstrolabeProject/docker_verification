@@ -1,5 +1,6 @@
-FROM python:3
-ADD directory_verification.py /
-COPY Hunter /
+FROM python:2.7-slim
+ADD fits_extract.py /
+ADD cvnidwabcut.fits /
+ADD cvnidwafcut.fits /
 RUN pip install astropy
-CMD [ "python", "./directory_verification.py" ]
+ENTRYPOINT [ "python", "./fits_extract.py" ]
