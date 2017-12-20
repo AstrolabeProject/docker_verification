@@ -36,10 +36,6 @@ def extract_fits(file):
                             headers.write(str(f[0].header[key]) + ',')
                     except KeyError:
                         headers.write(',')
-                # print(f[0].header['RADESYS'])
-                # for key in f[0].header._cards:
-                #     print(key[0], str(key[1]).replace(",",""), key[2])
-                #     headers.write('{}, {}, {} \n'.format(key[0], str(key[1]).replace(",",""), key[2]))
-
+               
 if __name__ == '__main__':
     extract_fits(sys.argv[1])
