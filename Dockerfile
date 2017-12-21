@@ -1,8 +1,8 @@
 FROM python:2.7-slim
-RUN git clone https://github.com/endere/docker_verification.git
-ADD fits_extract.py /
-ADD cvnidwabcut.fits /
+ADD https://raw.githubusercontent.com/endere/docker_verification/master/fits_extract.py /
+ADD https://raw.githubusercontent.com/endere/docker_verification/master/blank.csv /
 ADD cvnidwafcut.fits /
-ADD blank.csv /
+ADD cvnidwabcut.fits /
 RUN pip install astropy
-ENTRYPOINT [ "python", "fits_extract.py" ]
+ENTRYPOINT [ "python", "/fits_extract.py" ]
+

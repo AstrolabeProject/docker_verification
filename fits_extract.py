@@ -24,7 +24,7 @@ def extract_fits(file):
             log.write("The file {} does not meet fits standard.".format(file))
         else:
             with open(file[:-5] + '.csv', 'w') as headers:
-                template = open('blank.csv', 'r').readlines()[0]
+                template = open('/blank.csv', 'r').readlines()[0]
                 headers.write(template)
                 for key in template[:-1].split(','):
                     try:
