@@ -16,7 +16,6 @@ def extract_fits(file):
         'start_time': 'DATE-OBS',
     }
     f = fits.open(file)
-    print(file)
     with warnings.catch_warnings(record=True) as w:
         f.verify()
         if len(w) > 0:
