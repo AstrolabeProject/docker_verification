@@ -8,6 +8,7 @@ def extract_fits(file):
 
     If it is, output csv file with header. Else, output that it is not in a log file.
     """
+    # Mapping from metadata template : FITS header card name
     alternates_dict = {
         'spatial_axis_1_number_bins': 'NAXIS1',
         'spatial_axis_2_number_bins': 'NAXIS2',
@@ -31,10 +32,13 @@ def extract_fits(file):
                 for key in template[:-1].split(','):
                     try:
                         if key == 'file name or path':
+                            # add file location
                             headers.write(file + ',')
                         elif key in alternates_dict.keys():
                             headers.write(str(f[0].header[alternates_dict[key]]) + ',')
                         else:
+                            # write exact header card name
+                            # special options for CRVALs and how they relate to CRTYPEs see https://fits.gsfc.nasa.gov/fits_standard.html
                             if key == 'CRVAL1':
                                 if 'RA' in header['CTYPE1']:
                                     headers.write(str(f[0].header['right_ascension']) + ',')
